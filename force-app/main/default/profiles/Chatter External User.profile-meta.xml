@@ -116,6 +116,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>HandsMen_Order__c.HandsMen_Product__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>HandsMen_Order__c.Order_Number__c</field>
         <readable>false</readable>
     </fieldPermissions>

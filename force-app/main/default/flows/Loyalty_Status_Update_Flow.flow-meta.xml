@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>loyalty_status_email</name>
+        <label>loyalty status email</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>HandsMen_Customer__c.Loyalty_program_email</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>Loop</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>Loop.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>HandsMen_Customer__c.Loyalty_program_email</nameSegment>
+    </actionCalls>
     <apiVersion>64.0</apiVersion>
     <decisions>
         <name>Decision</name>
@@ -9,7 +28,7 @@
         <defaultConnector>
             <targetReference>update_loyalty_status_to_silver</targetReference>
         </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <defaultConnectorLabel>Silver</defaultConnectorLabel>
         <rules>
             <name>If_Total_Purchases_c_1000</name>
             <conditionLogic>and</conditionLogic>
@@ -23,22 +42,22 @@
             <connector>
                 <targetReference>update_loyalty_status_to_gold</targetReference>
             </connector>
-            <label>If Total_Purchases__c &gt; 1000</label>
+            <label>Gold</label>
         </rules>
         <rules>
             <name>Set_Loyalty_Status_c_Gold</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>Loop.Loyalty_Status__c</leftValueReference>
-                <operator>EqualTo</operator>
+                <leftValueReference>Loop.Total_Purchases__c</leftValueReference>
+                <operator>LessThanOrEqualTo</operator>
                 <rightValue>
-                    <stringValue>Gold</stringValue>
+                    <numberValue>500.0</numberValue>
                 </rightValue>
             </conditions>
             <connector>
                 <targetReference>update_loyalty_status_to_bronze</targetReference>
             </connector>
-            <label>Set Loyalty_Status__c = Gold</label>
+            <label>Bronze</label>
         </rules>
     </decisions>
     <environments>Default</environments>
@@ -93,8 +112,16 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Loop</targetReference>
+            <targetReference>loyalty_status_email</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Loop.Id</elementReference>
+            </value>
+        </filters>
         <inputAssignments>
             <field>Loyalty_Status__c</field>
             <value>
@@ -109,8 +136,16 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Loop</targetReference>
+            <targetReference>loyalty_status_email</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Loop.Id</elementReference>
+            </value>
+        </filters>
         <inputAssignments>
             <field>Loyalty_Status__c</field>
             <value>
@@ -125,8 +160,16 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Loop</targetReference>
+            <targetReference>loyalty_status_email</targetReference>
         </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Loop.Id</elementReference>
+            </value>
+        </filters>
         <inputAssignments>
             <field>Loyalty_Status__c</field>
             <value>

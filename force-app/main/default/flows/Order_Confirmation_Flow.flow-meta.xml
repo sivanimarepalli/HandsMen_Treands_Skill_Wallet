@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
-        <name>Send_Order_Confirmation_Email</name>
-        <label>Send Order Confirmation Email</label>
+        <name>send_email_conformation_alert</name>
+        <label>send email conformation alert</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <actionName>HandsMen_Order__c.Order_Confirmation_Email_Alert</actionName>
@@ -43,7 +43,7 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Send_Order_Confirmation_Email</targetReference>
+            <targetReference>send_email_conformation_alert</targetReference>
         </connector>
         <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
         <filterLogic>and</filterLogic>

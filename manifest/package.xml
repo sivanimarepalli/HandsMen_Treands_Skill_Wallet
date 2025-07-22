@@ -26,6 +26,10 @@
   </types>
   <types>
   <members>*</members>
+  <name>WorkflowAlert</name>
+  </types>
+  <types>
+  <members>*</members>
   <name>FlexiPage</name>
 </types>
   <types>
