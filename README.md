@@ -116,7 +116,7 @@ HandsMenThreads/
 ## 📄 Project Documentation
 A detailed project report containing the abstract, technology stack, project phases, real-world implementation, validations, automation logic, and visuals can be found in:
 
-📘 HandsMen_Threads_documentation.pdf
+📘 Documentation/HandsMen_Threads_documentation.pdf
 
 ---
 
